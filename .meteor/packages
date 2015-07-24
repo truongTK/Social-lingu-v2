@@ -8,8 +8,18 @@ meteor-platform
 react
 accounts-ui
 accounts-password
+accounts-facebook
+service-configuration
+accounts-twitter
+accounts-google
 
 cosmos:browserify
 meteorhacks:npm
 
 npm-container
+babel-compiler
+babel-runtime
+jsx
+react-meteor-data
+react-template-helper
+poetic:react-material-ui
