@@ -5,7 +5,8 @@ const {
   NavigationClose,
   FlatButton,
   IconMenu,
-  FontIcon
+  FontIcon,
+  TextField
 } = mui;
 
 const ThemeManager = new mui.Styles.ThemeManager();
@@ -25,8 +26,17 @@ App = React.createClass({
   render() {
     return (
       <div className="container">
-        <AppBar
-          title="Title"/>
+      <AppBar
+      title="Login"/>
+      <TextField
+      hintText="Your email" id="email-login"/>
+      <TextField
+      hintText="Your password" />
+      <div className="button" >
+      <a href="#">Forgot your password?</a>
+      <RaisedButton label="Login" secondary={true} fullWidth={true}/>
+      <RaisedButton label="Sign up" secondary={true} fullWidth={true}/>
+      </div>
       </div>
     );
   }
