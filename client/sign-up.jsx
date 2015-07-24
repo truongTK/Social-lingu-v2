@@ -22,12 +22,16 @@ Signup = React.createClass({
       muiTheme: ThemeManager.getCurrentTheme()
     };
   },
+  toggleToLogIn() {
+    React.render(<Login />, document.getElementById("render-target"));
+  },
 
   render() {
     return (
       <div className="container">
       <AppBar
-  title="Sign Up"/>
+      title="SIGN UP"
+      iconElementRight={<FlatButton label="Back" onClick={this.toggleToLogIn}/>} />
 
       <div className="email-field">
       <TextField
