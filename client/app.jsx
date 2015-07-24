@@ -34,7 +34,7 @@ App = React.createClass({
       );
     }
     //not logged in
-    return(<Login />);
+    return(<ChooseLanguage />);
 
   }
 });

@@ -29,21 +29,21 @@ Login = React.createClass({
   render() {
     return (
       <div className="container">
-      <AppBar
-      title="Login"/>
-      <div className="email-field">
-      <TextField
-      hintText="Your email" id="email-login"/>
-      </div>
-      <div className="password-field">
-      <TextField
-      hintText="Your password" />
-      </div>
-      <div className="function-button" >
-      <a href="#">Forgot your password?</a>
-      <RaisedButton label="Login" secondary={true} fullWidth={true}/>
-      <RaisedButton label="Sign up" secondary={true} fullWidth={true} onClick={this.toggleToSignUp} />
-      </div>
+        <AppBar
+          title="Login"/>
+        <div className="email-field">
+          <TextField
+            hintText="Your email" id="email-login"/>
+        </div>
+        <div className="password-field">
+          <TextField
+            hintText="Your password" />
+        </div>
+        <div className="function-button" >
+          <a href="#">Forgot your password?</a>
+          <RaisedButton label="Login" secondary={true} fullWidth={true}/>
+          <RaisedButton label="Sign up" secondary={true} fullWidth={true} onClick={this.toggleToSignUp} />
+        </div>
       </div>
     );
   }
