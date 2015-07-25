@@ -31,17 +31,7 @@ App = React.createClass({
     if(Meteor.userId()){
       //Just logged in before
       return (
-        <div className="container">
-        { !Meteor.userId() ? (
-          <AppBar title="Social lingu" />
-        ):
-        (
-          <AppBar title="Social lingu"
-          iconElementRight={<FlatButton label="Logout" onClick={this.toggleLogOut}/>}
-          />
-        )
-        }
-        </div>
+        <ChooseLanguage/>
       );
     }
     //not logged in
