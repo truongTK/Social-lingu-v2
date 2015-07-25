@@ -34,8 +34,8 @@ Login = React.createClass({
     };
   },
   togglePasswordLogin(){
-    var email = $('#login-username').val();
-    var pwd = $('#login-password').val();
+    var email = this.refs.loginEmail.getValue();
+    var pwd = this.refs.loginPassword.getValue();
     Meteor.loginWithPassword(email, pwd,function(err, res) {
       if (err) {
         $('div[id="errorMessage"]').text("Invalid email or password");
@@ -81,14 +81,14 @@ Login = React.createClass({
     return (
       <div className="container">
       <AppBar
-      title="LOGIN"/>
+      title="LOGIN" zDepth={0}/>
       <div id="errorMessage" class="message error-message"></div>
       <div className="email-field">
-      <TextField id="login-username"
-      hintText="Your email" id="email-login" fullWidth={true}/>
+      <TextField ref="loginEmail"
+      hintText="Your email" fullWidth={true}/>
       </div>
       <div className="password-field">
-      <TextField id="login-password"
+      <TextField ref="loginPassword" type="password"
       hintText="Your password" fullWidth={true}/>
       </div>
       <div>

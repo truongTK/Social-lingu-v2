@@ -10,7 +10,7 @@ const {
 } = mui;
 
 const ThemeManager = new mui.Styles.ThemeManager();
-
+Meteor.subscribe("userinfo");
 App = React.createClass({
   // This mixin makes the getMeteorData method work
   childContextTypes: {
@@ -29,13 +29,8 @@ App = React.createClass({
 
   render() {
     if(Meteor.userId()){
-      //Just logged in before
-      return (
-        <ChooseLanguage/>
-      );
+      return (<ChooseLanguage/>);
     }
-    //not logged in
-    return(<Login />);
-
+    return (<Login/>);
   }
 });

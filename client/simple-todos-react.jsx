@@ -5,6 +5,7 @@ Meteor.subscribe('languages');
 Meteor.subscribe('request');
 Meteor.subscribe('reply');
 Meteor.subscribe('rating');
+Meteor.subscribe("users");
 Meteor.startup(function () {
   // Use Meteor.startup to render the component after the page is ready
   injectTapEventPlugin();

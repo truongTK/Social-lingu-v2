@@ -14,24 +14,11 @@ const ThemeManager = new mui.Styles.ThemeManager();
 var isValidPassword = function(val) {
   return val.length >= 6 ? true : false;
 };
-var isEmailValid = function(address) {
-  return /^[A-Z0-9'.1234z_%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(address);
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
 };
-var isValidEmail = function(sValue) {
-  if (sValue.indexOf('@') <0) {
-    return false;
-  }
-  if (sValue.indexOf('.') < 0) {
-    return false;
-  }
-  if (sValue.indexOf('@.') >= 0) {
-    return false;
-  }
-  if (sValue.indexOf('.@') >= 0) {
-    return false;
-  }
-  return true;
-};
+
 
 Signup = React.createClass({
   // This mixin makes the getMeteorData method work
@@ -48,11 +35,11 @@ Signup = React.createClass({
     React.render(<Login />, document.getElementById("render-target"));
   },
   toggleSignUp(){
-    var email = $('#login-username').val();
-    var pwd = $('#login-password').val();
-    var pwdConfirm = $('#login-password-again').val();
+    var email = this.refs.emailValue.getValue();
+    var pwd = this.refs.loginPassword.getValue();
+    var pwdConfirm = this.refs.loginPasswordAgain.getValue();
     //Check confirm password ok.
-    if (isEmailValid(email) == false) {
+    if (validateEmail(email) == false) {
       $('div[id="errorMessage"]').text('Invalid email');
       return;
     }
@@ -64,14 +51,21 @@ Signup = React.createClass({
       $('div[id="errorMessage"]').text('Confirm password not match.');
       return;
     }
-    //If email and password ok --> Done
-    if (isValidPassword(pwd) && isValidEmail(email)) {
-      Accounts.createUser({
-        email: email,
-        password: pwd
-      });
-      React.render(<App />, document.getElementById("render-target"));
-    }
+    // var _users = Meteor.users.find({ "emails.address" : email}).fetch();
+    // console.log(_users);
+    // if(_users.length > 0){
+    //   $('div[id="errorMessage"]').text('Email not available');
+    //   return;
+    // }
+    Accounts.createUser({email:email, password:pwd}, function(err, res) {
+      if(err){
+        $('div[id="errorMessage"]').text(err.reason);
+        return;
+      }else{
+        React.render(<ChooseLanguage />, document.getElementById("render-target"));
+      }
+    });
+
   },
 
   render() {
@@ -79,18 +73,18 @@ Signup = React.createClass({
       <div className="container">
       <AppBar
       title="SIGN UP"
-      iconElementRight={<FlatButton label="Back" onClick={this.toggleToLogIn}/>} />
+      iconElementRight={<FlatButton label="Back" onClick={this.toggleToLogIn}/>} zDepth={0}/>
       <div id="errorMessage" class="message error-message"></div>
       <div className="email-field">
-      <TextField id="login-username"
-      hintText="Your email" id="email-login"/>
+      <TextField
+      hintText="Your email" ref="emailValue"/>
       </div>
       <div className="password-field">
-      <TextField id="login-password"
+      <TextField ref="loginPassword" type="password"
       hintText="Your password" />
       </div>
       <div className="confirm-password-field">
-      <TextField id="login-password-again"
+      <TextField ref="loginPasswordAgain" type="password"
       hintText="Confirm your password" />
       </div>
       <div className="function-button" >
