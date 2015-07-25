@@ -22,14 +22,25 @@ App = React.createClass({
       muiTheme: ThemeManager.getCurrentTheme()
     };
   },
+  toggleLogOut(){
+    Meteor.logout();
+    React.render(<Login />, document.getElementById("render-target"));
+  },
 
   render() {
     if(Meteor.userId()){
       //Just logged in before
       return (
         <div className="container">
-        <AppBar
-        title="Social lingu"/>
+        { !Meteor.userId() ? (
+          <AppBar title="Social lingu" />
+        ):
+        (
+          <AppBar title="Social lingu"
+          iconElementRight={<FlatButton label="Logout" onClick={this.toggleLogOut}/>}
+          />
+        )
+        }
         </div>
       );
     }
