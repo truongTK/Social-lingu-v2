@@ -101,10 +101,10 @@ ChooseLanguage = React.createClass({
 
     return (
       <div className="container">
-      <AppBar
+      <AppBar id="chooseLanguageBar"
       title={getUserName()}
       zDepth={0}
-      iconElementRight={<FlatButton label="Log out" onClick={this.toggleLogout}/>}/>
+      iconElementRight={<FlatButton id="logoutButton" label="Log out" onClick={this.toggleLogout}/>}/>
       <h2 className="label">Learn</h2>
       <ListDivider />
       <DropDownMenu

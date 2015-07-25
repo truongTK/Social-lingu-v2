@@ -85,17 +85,17 @@ Login = React.createClass({
       <div id="errorMessage" class="message error-message"></div>
       <div className="email-field">
       <TextField ref="loginEmail"
-      hintText="Your email" fullWidth={true}/>
+      hintText="Your email" fullWidth={true} id="loginEmail"/>
       </div>
       <div className="password-field">
       <TextField ref="loginPassword" type="password"
-      hintText="Your password" fullWidth={true}/>
+      hintText="Your password" fullWidth={true} id="loginPassword"/>
       </div>
       <div>
-      <RaisedButton label="Login" secondary={true} fullWidth={true} onClick={this.togglePasswordLogin}/>
-      <RaisedButton label="Sign up" secondary={true} fullWidth={true} onClick={this.toggleToSignUp} />
-      <RaisedButton label="Login with Facebook" secondary={true} fullWidth={true} onClick={this.toggleFacebookLogin}/>
-      <RaisedButton label="Login with Google" secondary={true} fullWidth={true} onClick={this.toggleGoogleLogin}/>
+      <RaisedButton id="linkLogin" label="Login" secondary={true} fullWidth={true} onClick={this.togglePasswordLogin}/>
+      <RaisedButton id="linkSignUp" label="Sign up" secondary={true} fullWidth={true} onClick={this.toggleToSignUp} />
+      <RaisedButton id="linkFacebook" label="Login with Facebook" secondary={true} fullWidth={true} onClick={this.toggleFacebookLogin}/>
+      <RaisedButton id="linkGoogle" label="Login with Google" secondary={true} fullWidth={true} onClick={this.toggleGoogleLogin}/>
       </div>
       </div>
     );

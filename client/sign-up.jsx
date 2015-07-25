@@ -77,18 +77,18 @@ Signup = React.createClass({
       <div id="errorMessage" class="message error-message"></div>
       <div className="email-field">
       <TextField
-      hintText="Your email" ref="emailValue"/>
+      hintText="Your email" ref="emailValue" id="signUpEmail"/>
       </div>
       <div className="password-field">
       <TextField ref="loginPassword" type="password"
-      hintText="Your password" />
+      hintText="Your password" id="signUpPassword"/>
       </div>
       <div className="confirm-password-field">
       <TextField ref="loginPasswordAgain" type="password"
-      hintText="Confirm your password" />
+      hintText="Confirm your password" id="signUpPasswordAgain"/>
       </div>
       <div className="function-button" >
-      <RaisedButton label="Sign up now" secondary={true} fullWidth={true} onClick={this.toggleSignUp}/>
+      <RaisedButton id="signUpButton" label="Sign up now" secondary={true} fullWidth={true} onClick={this.toggleSignUp}/>
       </div>
       </div>
     );
